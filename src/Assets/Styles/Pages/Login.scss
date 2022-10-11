@@ -1,23 +1,44 @@
 .login-viewport{
-    height: 100vh;
-
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
 }
 
 .login
 {
     background-color: $bud-green;
     border-radius: 1rem;
+    color: $dark-chocolate;
     height: 400px;
     min-width: 20rem;
     opacity: 0.7;
 }
 
 .login__user-icon{
-    height: 50%;
     font-size: 10rem;
-    color: $dark-chocolate;
+    height: 50%;
     text-align: center;
+}
+
+.login__form-wrapper
+{
+    align-items: center;
+    display: flex;
+    height: 50%;
+    padding: 1rem;
+}
+
+.login__form{
+    // display: block;
+    width: 100%;
+}
+
+.login__form-group{
+    margin-top: .5rem;
+}
+
+.login__button-wrapper{
+    display: flex;
+    justify-content: end;
 }

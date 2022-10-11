@@ -1,8 +1,21 @@
 @import "./variables";
 @import "./Pages/Login.scss";
 
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-// body{
-//     background-color: #121315;
-//     color: whitesmoke;
-// }
+input{
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    height: 2rem;
+    width: 100%;
+}
+
+.button{
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    height: 2rem;
+    min-width: 150px;
+}
