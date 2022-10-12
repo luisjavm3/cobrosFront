@@ -1,17 +1,14 @@
-import axios from 'axios';
+import axios from "axios";
 
-const develoment_url = 'https://localhost:5001';
+const url = "https://localhost:5001/";
 
-export default function getAxios(accessToken = '') {
-  let headers = {
-    'content-type': 'application/json',
-  };
-
-  if (accessToken) headers.authentication = accessToken;
-
+export const getAxios = (token) => {
   return axios.create({
-    baseURL: develoment_url,
+    baseURL: url,
     timeout: 1000,
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
-}
+};
