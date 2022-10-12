@@ -43,6 +43,12 @@ const authSlice = createSlice({
       state.isAuth = true;
       state.accessToken = action.payload;
       state.loading = false;
+
+      let store = localStorage.getItem("cobroStore");
+      localStorage.setItem(
+        "cobroStore",
+        JSON.stringify({ ...store, auth: state })
+      );
     },
     [login.rejected]: (state, action) => {
       state.isAuth = false;
