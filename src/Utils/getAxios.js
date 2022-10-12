@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const url = "https://localhost:5001/";
-// const client = getAxios();
 
 export const getAxios = (token) => {
   return axios.create({
@@ -14,23 +13,25 @@ export const getAxios = (token) => {
   });
 };
 
+const client = getAxios();
+
 axios.interceptors.request.use(async (req) => {
-  if (isAccessTokenExpired) {
+  const accessToken = localStorage.getItem("cobroAccessToken");
+  const expiration = JSON.parse(accessToken.split(".")[1]).exp;
+
+  console.log("--→ Expiration: " + expiration);
+  console.log("--→ Now: " + Date.now());
+
+  // Token has not expired.
+  if (expiration > Date.now()) return;
+
+  // Token has expired. ↓
+  try {
     console.log(`--→ Interceptor: Token expirado. Refrescando token.`);
-    // client.post("Auth/Refresh-Token");
+    const response = await client.post("Auth/Refresh-Token");
+    const newToken = response.data;
+    localStorage.setItem("cobroAccessToken", newToken);
+  } catch (error) {
+    console.log("Error refreshing token.");
   }
 });
-
-const getAccessToken = () => {
-  const store = JSON.parse(localStorage.getItem("cobroStore"));
-
-  return store.auth.accessToken;
-};
-
-const isAccessTokenExpired = () => {
-  const token = getAccessToken();
-
-  const tokenExpiration = JSON.parse(token.split(".")[1]).exp;
-
-  return tokenExpiration >= Date.now();
-};

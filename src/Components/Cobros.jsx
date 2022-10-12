@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 import { getAxios } from "../Utils/getAxios";
 
 export default function Cobros() {
   const [cobros, setCobros] = useState([]);
-  const { accessToken } = useSelector((store) => store.auth);
+  const accessToken = localStorage.getItem("cobroAccessToken");
   const client = getAxios(accessToken);
 
   useEffect(() => {
     async function fetchCobros() {
       let response = await client.get("Cobros");
-      console.log(response.data);
       setCobros(response.data);
     }
 
@@ -35,7 +33,7 @@ export default function Cobros() {
           <tbody className="table-body">
             {cobros.map((cobro) => {
               return (
-                <tr>
+                <tr key={cobro.id}>
                   <td>{cobro.id}</td>
                   <td>{cobro.name}</td>
                   <td>{cobro.userId}</td>
