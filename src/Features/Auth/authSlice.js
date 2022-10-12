@@ -1,13 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 import { getAxios } from "../../Utils/getAxios";
+
+const MySwal = withReactContent(Swal);
+const client = getAxios();
 
 const initialState = {
   isAuth: false,
   accessToken: null,
   loading: false,
 };
-
-const client = getAxios();
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -45,7 +49,11 @@ const authSlice = createSlice({
       state.accessToken = "";
       state.loading = false;
 
-      // console.log(action);
+      MySwal.fire({
+        icon: "error",
+        title: <p>{action.payload}</p>,
+        timer: 1200,
+      });
     },
   },
 });
