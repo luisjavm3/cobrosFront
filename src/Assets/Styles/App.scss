@@ -1,4 +1,6 @@
 @import "./variables";
+@import "./Components/Spinner.scss";
+
 @import "./Pages/Login.scss";
 
 *{
@@ -18,4 +20,13 @@ input{
     font-size: 1.2rem;
     height: 2rem;
     min-width: 150px;
+
+    &:hover{
+        background-color: #FDFFFC;
+        cursor: pointer;
+    }
+
+    &:active{
+        background-color: #E2FFD6;
+    }
 }
