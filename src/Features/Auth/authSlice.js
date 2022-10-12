@@ -9,7 +9,6 @@ const client = getAxios();
 
 const initialState = {
   isAuth: false,
-  accessToken: null,
   loading: false,
 };
 
@@ -36,23 +35,24 @@ const authSlice = createSlice({
   extraReducers: {
     [login.pending]: (state) => {
       state.isAuth = false;
-      state.accessToken = "";
       state.loading = true;
     },
     [login.fulfilled]: (state, action) => {
       state.isAuth = true;
-      state.accessToken = action.payload;
       state.loading = false;
+      // state.accessToken = action.payload;
 
       let store = localStorage.getItem("cobroStore");
       localStorage.setItem(
         "cobroStore",
         JSON.stringify({ ...store, auth: state })
       );
+
+      localStorage.setItem("cobroAccessToken", action.payload);
     },
     [login.rejected]: (state, action) => {
       state.isAuth = false;
-      state.accessToken = "";
+      // state.accessToken = "";
       state.loading = false;
 
       MySwal.fire({
