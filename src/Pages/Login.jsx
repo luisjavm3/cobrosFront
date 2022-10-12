@@ -84,6 +84,6 @@ export default function Login() {
       )}
     </div>
   ) : (
-    <Navigate to="/" />
+    <Navigate to="/cobros" />
   );
 }

@@ -1,11 +1,18 @@
 @import "./variables";
 @import "./Components/Spinner.scss";
 @import "./Components/RootLayout.scss";
+@import "./Components/Header.scss";
+@import "./Components/Menu.scss";
 @import "./Pages/Login.scss";
+@import "./Pages/Cobros.scss";
 
 *{
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+body{
+    margin: 0;
 }
 
 input{
@@ -28,5 +35,32 @@ input{
 
     &:active{
         background-color: #E2FFD6;
+    }
+}
+
+.content-frame{
+    margin: 0 auto;
+    max-width: 1250px;
+    padding: 0 .5rem;
+}
+
+.table{
+    background-color: lighten($color: $dark-chocolate, $amount: 5);
+    border-radius: .5rem;
+    opacity: .7;
+    width: 100%;
+}
+
+.table-head{
+    color: $bud-green;
+
+    tr{
+        font-weight: 600;
+    }
+
+    td{
+        padding: 0;
+        margin: 0;
+        text-transform: capitalize;
     }
 }

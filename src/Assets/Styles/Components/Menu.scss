@@ -1,0 +1,28 @@
+.menu{
+    display: flex;
+    height: 2rem;
+    justify-content: space-between;
+}
+
+.menu__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__list-item{
+    display: inline-block;
+
+    a{
+        border-radius: .5rem .5rem 0 0;
+        padding: 0.5rem;
+        text-decoration: none;
+        color: $dark-chocolate;
+
+        &:hover{
+            background-color: $dark-chocolate;
+            color: $bud-green;
+            cursor: pointer;
+        }
+    }
+}

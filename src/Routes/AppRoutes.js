@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "../Pages/Login";
 import RootLayout from "../Components/RootLayout";
 import ProtectedRoute from "./ProtectedRoute";
+import Cobros from "../Components/Cobros";
 
 export default function AppRoutes() {
   return (
@@ -18,7 +19,9 @@ export default function AppRoutes() {
               <RootLayout />
             </ProtectedRoute>
           }
-        ></Route>
+        >
+          <Route path="cobros" element={<Cobros />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
