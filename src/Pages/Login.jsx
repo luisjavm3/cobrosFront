@@ -4,11 +4,12 @@ import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../Features/Auth/authSlice";
 import Spinner from "../Components/Spinner";
+import { Navigate } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { loading } = useSelector((store) => store.auth);
+  const { isAuth, loading } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   const submitHandler = function (e) {
@@ -35,7 +36,7 @@ export default function Login() {
     }
   };
 
-  return (
+  return !isAuth ? (
     <div className="login-viewport">
       {!loading ? (
         <div className="login">
@@ -82,5 +83,7 @@ export default function Login() {
         <Spinner />
       )}
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 }
