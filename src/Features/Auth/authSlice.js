@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getAxios } from "../../Utils/getAxios";
 
 const initialState = {
   isAuth: false,
@@ -7,24 +7,24 @@ const initialState = {
   loading: false,
 };
 
+const client = getAxios();
+
 export const login = createAsyncThunk(
-  'auth/login',
+  "auth/login",
   async (loginDto, thunkAPI) => {
     try {
-      const response = await axios.post(
-        'https://localhost:5001/auth/login',
-        loginDto
-      );
+      const response = await client.post("auth/login", loginDto);
 
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue('Cannot login.');
+      // console.log(error.response.data);
+      return thunkAPI.rejectWithValue("Datos incorrectos.");
     }
   }
 );
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     foo: (state, action) => {},
@@ -32,7 +32,7 @@ const authSlice = createSlice({
   extraReducers: {
     [login.pending]: (state) => {
       state.isAuth = false;
-      state.accessToken = '';
+      state.accessToken = "";
       state.loading = true;
     },
     [login.fulfilled]: (state, action) => {
@@ -40,10 +40,12 @@ const authSlice = createSlice({
       state.accessToken = action.payload;
       state.loading = false;
     },
-    [login.rejected]: (state) => {
+    [login.rejected]: (state, action) => {
       state.isAuth = false;
-      state.accessToken = '';
+      state.accessToken = "";
       state.loading = false;
+
+      // console.log(action);
     },
   },
 });
