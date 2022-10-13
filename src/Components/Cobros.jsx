@@ -4,13 +4,16 @@ import { getAxios } from "../Utils/getAxios";
 
 export default function Cobros() {
   const [cobros, setCobros] = useState([]);
-  const accessToken = localStorage.getItem("cobroAccessToken");
-  const client = getAxios(accessToken);
+  const client = getAxios();
 
   useEffect(() => {
     async function fetchCobros() {
-      let response = await client.get("Cobros");
-      setCobros(response.data);
+      try {
+        let response = await client.get("Cobros");
+        setCobros(response.data);
+      } catch (error) {
+        console.log("Error fetching cobros");
+      }
     }
 
     fetchCobros();

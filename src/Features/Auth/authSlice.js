@@ -5,12 +5,13 @@ import withReactContent from "sweetalert2-react-content";
 import { getAxios } from "../../Utils/getAxios";
 
 const MySwal = withReactContent(Swal);
-const client = getAxios();
 
 const initialState = {
   isAuth: false,
   loading: false,
 };
+
+const client = getAxios();
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -20,7 +21,6 @@ export const login = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      // console.log(error.response.data);
       return thunkAPI.rejectWithValue("Datos incorrectos.");
     }
   }
@@ -40,7 +40,6 @@ const authSlice = createSlice({
     [login.fulfilled]: (state, action) => {
       state.isAuth = true;
       state.loading = false;
-      // state.accessToken = action.payload;
 
       let store = localStorage.getItem("cobroStore");
       localStorage.setItem(
@@ -52,7 +51,6 @@ const authSlice = createSlice({
     },
     [login.rejected]: (state, action) => {
       state.isAuth = false;
-      // state.accessToken = "";
       state.loading = false;
 
       MySwal.fire({

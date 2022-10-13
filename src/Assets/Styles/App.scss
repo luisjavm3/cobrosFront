@@ -49,6 +49,10 @@ input{
     border-radius: .5rem;
     opacity: .7;
     width: 100%;
+
+    td{
+        height: $table-item-height;
+    }
 }
 
 .table-head{
@@ -62,5 +66,19 @@ input{
         padding: 0;
         margin: 0;
         text-transform: capitalize;
+    }
+}
+
+.table-body{
+    background-color: #FDFFFC;
+
+    tr:last-child{
+        td:first-child{
+            border-radius: 0 0 0 .5rem;
+        }
+
+        td:last-child{
+            border-radius: 0 0 .5rem 0;
+        }
     }
 }
