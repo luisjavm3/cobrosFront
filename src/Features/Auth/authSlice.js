@@ -30,7 +30,13 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    accessToken: (state, action) => {},
+    closeSession: (state, action) => {
+      localStorage.removeItem("cobroStore");
+      localStorage.removeItem("cobroAccessToken");
+
+      state.isAuth = false;
+      state.loading = false;
+    },
   },
   extraReducers: {
     [login.pending]: (state) => {
@@ -62,6 +68,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { accessToken: foo } = authSlice.actions;
+export const { closeSession } = authSlice.actions;
 
 export default authSlice.reducer;

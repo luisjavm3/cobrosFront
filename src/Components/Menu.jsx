@@ -3,10 +3,17 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+
+import { closeSession } from "../Features/Auth/authSlice";
 
 export default function Menu() {
-  // const { pathname } = useLocation();
-  // console.log(pathname);
+  const dispatch = useDispatch();
+
+  const onExitHandler = () => {
+    console.log("exit");
+    dispatch(closeSession());
+  };
 
   return (
     <div className="menu">
@@ -36,7 +43,7 @@ export default function Menu() {
             </Link>
           </li>
           <li className="menu__list-item">
-            <Link to="any">
+            <Link onClick={onExitHandler}>
               <FontAwesomeIcon icon={faRightFromBracket} />
             </Link>
           </li>
