@@ -25,24 +25,24 @@ export default function Cobros() {
         <table className="table">
           <thead className="table-head">
             <tr>
-              <td>id</td>
-              <td>nombre</td>
-              <td>usuario</td>
-              <td>cobrador</td>
-              <td>creditos</td>
-              <td>total</td>
+              <td>&nbsp;id</td>
+              <td>&nbsp;nombre</td>
+              <td>&nbsp;usuario</td>
+              <td>&nbsp;cobrador</td>
+              <td>&nbsp;creditos</td>
+              <td>&nbsp;total</td>
             </tr>
           </thead>
           <tbody className="table-body">
             {cobros.map((cobro) => {
               return (
                 <tr key={cobro.id}>
-                  <td>{cobro.id}</td>
-                  <td>{cobro.name}</td>
-                  <td>{cobro.userId}</td>
-                  <td>{cobro.debtCollectorId}</td>
-                  <td>{cobro.loans}</td>
-                  <td>{cobro.balance}</td>
+                  <td>&nbsp;{cobro.id}</td>
+                  <td>&nbsp;{cobro.name}</td>
+                  <td>&nbsp;{cobro.userId}</td>
+                  <td>&nbsp;{cobro.debtCollectorId}</td>
+                  <td>&nbsp;{cobro.loans}</td>
+                  <td>&nbsp;{cobro.balance}</td>
                 </tr>
               );
             })}
