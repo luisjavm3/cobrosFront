@@ -16,25 +16,25 @@ export const getAxios = () => {
     },
   });
 
-  if (token)
-    instance.interceptors.request.use(async function (config) {
-      console.log("--→ Inside Interceptor.");
-      const expiration = JSON.parse(window.atob(token.split(".")[1])).exp;
-      const now = Date.now() / 1000;
+  // if (token)
+  //   instance.interceptors.request.use(async function (config) {
+  //     console.log("--→ Inside Interceptor.");
+  //     const expiration = JSON.parse(window.atob(token.split(".")[1])).exp;
+  //     const now = Date.now() / 1000;
 
-      // Stop execution if token has not expired.
-      if (expiration > now) return config;
+  //     // Stop execution if token has not expired.
+  //     if (expiration > now) return config;
 
-      try {
-        const response = await axios.post(`${url}Auth/Refresh-Token`);
-        const newToken = response.data;
-        localStorage.setItem("cobroAccessToken", newToken);
-      } catch (error) {
-        console.log("Error refreshing token - Inside Interceptor.");
-      }
+  //     try {
+  //       const response = await axios.post(`${url}Auth/Refresh-Token`);
+  //       const newToken = response.data;
+  //       localStorage.setItem("cobroAccessToken", newToken);
+  //     } catch (error) {
+  //       console.log("Error refreshing token - Inside Interceptor.");
+  //     }
 
-      return config;
-    });
+  //     return config;
+  //   });
 
   return instance;
 };
