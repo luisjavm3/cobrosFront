@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function CobroList(props) {
-  const { cobros } = props;
+  const { client } = props;
+  const [cobros, setCobros] = useState([]);
+
+  useEffect(() => {
+    async function fetchCobros() {
+      try {
+        let response = await client.get("Cobros");
+        setCobros(response.data);
+      } catch (error) {
+        console.log("Error fetching cobros");
+      }
+    }
+
+    fetchCobros();
+  }, []);
 
   return (
     <div>
@@ -54,7 +68,7 @@ function CobroList(props) {
 }
 
 CobroList.propTypes = {
-  cobros: PropTypes.array,
+  client: PropTypes.func,
 };
 
 export default CobroList;

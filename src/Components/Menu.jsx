@@ -11,7 +11,6 @@ export default function Menu() {
   const dispatch = useDispatch();
 
   const onExitHandler = () => {
-    console.log("exit");
     dispatch(closeSession());
   };
 
