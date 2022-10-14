@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import { getAxios } from "../Utils/getAxios";
 
 export default function Cobros() {
-  const [cobros, setCobros] = useState([]);
   const client = getAxios();
+  const location = useLocation();
+  console.log(location);
+  const [cobros, setCobros] = useState([]);
 
   useEffect(() => {
     async function fetchCobros() {
@@ -37,10 +40,24 @@ export default function Cobros() {
             {cobros.map((cobro) => {
               return (
                 <tr key={cobro.id}>
-                  <td>&nbsp;{cobro.id}</td>
-                  <td>&nbsp;{cobro.name}</td>
-                  <td>&nbsp;{cobro.userId}</td>
-                  <td>&nbsp;{cobro.debtCollectorId}</td>
+                  <td>
+                    &nbsp;
+                    {cobro.id}
+                  </td>
+                  <td>
+                    &nbsp;
+                    <Link to={`/cobros/${cobro.id}`}>{cobro.name}</Link>
+                  </td>
+                  <td>
+                    &nbsp;
+                    {<Link>{`${cobro.user.name} ${cobro.user.lastName}`}</Link>}
+                  </td>
+                  <td>
+                    &nbsp;
+                    <Link>
+                      {`${cobro.debtCollector.name} ${cobro.debtCollector.lastName}`}
+                    </Link>
+                  </td>
                   <td>&nbsp;{cobro.loans}</td>
                   <td>&nbsp;{cobro.balance}</td>
                 </tr>

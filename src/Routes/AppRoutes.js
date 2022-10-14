@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "../Pages/Login";
 import RootLayout from "../Components/RootLayout";
 import ProtectedRoute from "./ProtectedRoute";
-import Cobros from "../Components/Cobros";
+import Cobros from "../Pages/Cobros";
 
 export default function AppRoutes() {
   return (
@@ -20,7 +20,9 @@ export default function AppRoutes() {
             </ProtectedRoute>
           }
         >
-          <Route path="cobros" element={<Cobros />}></Route>
+          <Route path="cobros" element={<Cobros />}>
+            <Route path=":id" element={<Cobros />}></Route>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
