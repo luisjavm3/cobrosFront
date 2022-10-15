@@ -1,23 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import {
-  createSearchParams,
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function TableFooter(props) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const location = useLocation();
   const { pagination } = props;
   const page = searchParams.get("page");
   const size = searchParams.get("size");
-
-  console.log(location);
 
   const onSelectHandler = function (e) {
     setSearchParams({ page, size: e.target.value });
@@ -34,7 +24,6 @@ export default function TableFooter(props) {
           <select
             name="pageSize"
             id="pageSize"
-            // defaultValue={"30"}
             onChange={(e) => onSelectHandler(e)}
             value={["10", "30", "50", "100"].includes(size) ? size : "0"}
           >
