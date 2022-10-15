@@ -1,0 +1,52 @@
+.table-footer{
+    background-color: aliceblue;
+    height: $table-item-height;
+
+    margin-top: 0;
+    margin-bottom: 3rem;
+
+    a{
+        text-transform: capitalize;
+    }
+}
+
+.table-footer-section{
+    display: inline-block;
+    width: 33.33%;
+}
+
+.page-size-wrapper{
+    align-items: center;
+    display: flex;
+    height: $table-item-height;
+    justify-content: center;
+}
+
+.page-size-wrapper{
+    label{
+        margin-right: .5rem;
+        text-transform: capitalize;
+    }
+}
+
+.table-footer-section .navigation{
+    display: flex;
+    justify-content: right;
+
+    a{
+        margin: .4rem;
+
+        :hover{
+            background-color: aqua;
+        }
+    }
+
+    .icon{
+        font-size: 1.3rem;
+    }
+}
+
+.inactive{
+    color: black;
+    text-decoration: none;
+}

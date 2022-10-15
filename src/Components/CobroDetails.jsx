@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import TableFooter from "./TableFooter";
 
 function CobroDetails(props) {
   const { client } = props;
   const { id } = useParams();
   const [cobro, setCobro] = useState({ user: {}, debtCollector: {} });
   const [creditos, setCreditos] = useState([]);
+  const [pagination, setPagination] = useState({});
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const page = searchParams.get("page");
+  const size = searchParams.get("size");
+
+  if (page == null || size == null) setSearchParams({ page: 1, size: 30 });
 
   useEffect(() => {
     async function fetchCobro() {
@@ -21,9 +29,12 @@ function CobroDetails(props) {
 
     async function fetchCreditos() {
       try {
-        const response = await client.get(`Cobros/${id}/Loans`);
-        const creditos = response.data.data;
+        const response = await client.get(
+          `Cobros/${id}/Loans?PageNumber=${page}&PageSize=${size}`
+        );
+        const { data: creditos, ...rest } = response.data;
         setCreditos(creditos);
+        setPagination(rest);
       } catch (error) {
         console.log("Error fetching Loans in Cobro with ID: " + id);
       }
@@ -102,9 +113,7 @@ function CobroDetails(props) {
           </tbody>
         </table>
 
-        <div className="table-footer">
-          <h4>table footer</h4>
-        </div>
+        <TableFooter pagination={pagination} />
       </div>
     </div>
   );

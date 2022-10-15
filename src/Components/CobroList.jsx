@@ -43,7 +43,9 @@ function CobroList(props) {
                   </td>
                   <td>
                     &nbsp;
-                    <Link to={`/cobros/${cobro.id}`}>{cobro.name}</Link>
+                    <Link to={`/cobros/${cobro.id}?page=1&size=30`}>
+                      {cobro.name}
+                    </Link>
                   </td>
                   <td>
                     &nbsp;
