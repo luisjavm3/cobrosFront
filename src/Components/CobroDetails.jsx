@@ -67,10 +67,12 @@ function CobroDetails(props) {
               <td className="same-width">{cobro.id}</td>
               <td>{cobro.name}</td>
               <td>
-                {<Link>{`${cobro.user.name} ${cobro.user.lastName}`}</Link>}
+                {
+                  <Link className="clickeable">{`${cobro.user.name} ${cobro.user.lastName}`}</Link>
+                }
               </td>
               <td>
-                <Link>
+                <Link className="clickeable">
                   {`${cobro.debtCollector.name} ${cobro.debtCollector.lastName}`}
                 </Link>
               </td>
@@ -84,6 +86,7 @@ function CobroDetails(props) {
       </div>
 
       <div className="cobros__table-wrapper">
+        <h2>Creditos</h2>
         <table className="table">
           <thead className="table-head">
             <tr>
@@ -102,10 +105,12 @@ function CobroDetails(props) {
             {creditos.map((credito) => {
               return (
                 <tr key={credito.id}>
-                  <td className="same-width">{credito.id}</td>
+                  <td className="same-width">
+                    <Link className="clickeable">{credito.id}</Link>
+                  </td>
                   <td>{moment(credito.createdAt).fromNow()}</td>
                   <td>
-                    <Link>
+                    <Link className="clickeable">
                       {`${credito.customer.name} ${credito.customer.lastName}`}
                     </Link>
                   </td>

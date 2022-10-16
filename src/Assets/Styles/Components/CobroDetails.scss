@@ -1,3 +1,15 @@
 .same-width{
     width: 95px;
 }
+
+
+.clickeable{
+    align-items: center;
+    display: flex;
+    height: 99%;
+    justify-content: center;
+    
+    &:hover{
+        background-color: lighten($color: $bud-green, $amount: 37);
+    }
+}
