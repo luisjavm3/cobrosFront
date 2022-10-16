@@ -39,15 +39,20 @@ function CobroList(props) {
                 <tr key={cobro.id}>
                   <td>{cobro.id}</td>
                   <td>
-                    <Link to={`/cobros/${cobro.id}?page=1&size=30`}>
+                    <Link
+                      className="clickeable"
+                      to={`/cobros/${cobro.id}?page=1&size=30`}
+                    >
                       {cobro.name}
                     </Link>
                   </td>
                   <td>
-                    {<Link>{`${cobro.user.name} ${cobro.user.lastName}`}</Link>}
+                    {
+                      <Link className="clickeable">{`${cobro.user.name} ${cobro.user.lastName}`}</Link>
+                    }
                   </td>
                   <td>
-                    <Link>
+                    <Link className="clickeable">
                       {`${cobro.debtCollector.name} ${cobro.debtCollector.lastName}`}
                     </Link>
                   </td>

@@ -58,10 +58,6 @@ input{
 
         a{
             text-decoration: none;
-
-            &:hover{
-                text-decoration: underline;
-            }
         }
     }
 }
@@ -91,5 +87,19 @@ input{
         td:last-child{
             border-radius: 0 0 .5rem 0;
         }
+    }
+}
+
+.clickeable{
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    height: 99%;
+    justify-content: center;
+    
+    &:hover{
+        background-color: lighten($color: $bud-green, $amount: 37);
+        color: $bud-green;
+        text-decoration: underline;
     }
 }
