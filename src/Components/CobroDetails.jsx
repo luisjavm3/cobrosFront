@@ -14,7 +14,7 @@ function CobroDetails(props) {
   const page = searchParams.get("page");
   const size = searchParams.get("size");
 
-  if (page == null || size == null) setSearchParams({ page: 1, size: 30 });
+  if (!page || !size) setSearchParams({ page: 1, size: 30 });
 
   useEffect(() => {
     async function fetchCobro() {
@@ -42,7 +42,7 @@ function CobroDetails(props) {
 
     fetchCobro();
     fetchCreditos();
-  }, []);
+  }, [page, size, id, client]);
 
   return (
     <div>

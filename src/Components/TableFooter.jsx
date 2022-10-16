@@ -1,22 +1,26 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 export default function TableFooter(props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { pagination } = props;
   const page = searchParams.get("page");
   const size = searchParams.get("size");
+  const location = useLocation();
 
   const onSelectHandler = function (e) {
     setSearchParams({ page, size: e.target.value });
-    window.location.reload();
   };
 
   return (
     <div className="table-footer">
-      <div className="table-footer-section"></div>
+      <div className="table-footer-section">
+        <span>
+          pagina {page} de {pagination.totalPages}
+        </span>
+      </div>
 
       <div className="table-footer-section">
         <div className="page-size-wrapper">
@@ -38,25 +42,49 @@ export default function TableFooter(props) {
 
       <div className="table-footer-section">
         <div className="navigation">
-          <Link className={page == 1 ? "inactive" : ""}>
+          {page == 1 ? (
             <span>primera</span>
-          </Link>
+          ) : (
+            <Link to={`${location.pathname}?page=1&size=${size}`}>
+              <span>primera</span>
+            </Link>
+          )}
 
-          <Link className="icon">
-            <FontAwesomeIcon icon={faAngleLeft} />
-          </Link>
+          {page == 1 ? (
+            <span>
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </span>
+          ) : (
+            <Link to={`${location.pathname}?page=${page - 1}&size=${size}`}>
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </Link>
+          )}
 
-          <Link className="inactive">
-            <span>{pagination.pageNumber}</span>
-          </Link>
+          <span>{pagination.pageNumber}</span>
 
-          <Link className="icon">
-            <FontAwesomeIcon icon={faAngleRight} />
-          </Link>
+          {page >= pagination.totalPages ? (
+            <span>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </span>
+          ) : (
+            <Link
+              to={`${location.pathname}?page=${
+                parseInt(page) + 1
+              }&size=${size}`}
+            >
+              <FontAwesomeIcon icon={faAngleRight} />
+            </Link>
+          )}
 
-          <Link>
+          {page == pagination.totalPages ? (
             <span>última</span>
-          </Link>
+          ) : (
+            <Link
+              to={`${location.pathname}?page=${pagination.totalPages}&size=${size}`}
+            >
+              <span>última</span>
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
 .table-footer{
-    background-color: aliceblue;
     height: $table-item-height;
 
     margin-top: 0;
@@ -13,6 +12,10 @@
 .table-footer-section{
     display: inline-block;
     width: 33.33%;
+
+    span{
+        text-transform: capitalize;
+    }
 }
 
 .page-size-wrapper{
@@ -33,16 +36,8 @@
     display: flex;
     justify-content: right;
 
-    a{
-        margin: .4rem;
-
-        :hover{
-            background-color: aqua;
-        }
-    }
-
-    .icon{
-        font-size: 1.3rem;
+    span{
+        margin: 0 .25rem;
     }
 }
 
