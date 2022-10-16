@@ -54,30 +54,30 @@ function CobroDetails(props) {
         <table className="table">
           <thead className="table-head">
             <tr>
-              <td>&nbsp;id</td>
-              <td>&nbsp;nombre</td>
-              <td>&nbsp;usuario</td>
-              <td>&nbsp;cobrador</td>
-              <td>&nbsp;creditos</td>
-              <td>&nbsp;saldo</td>
+              <td>id</td>
+              <td>nombre</td>
+              <td>usuario</td>
+              <td>cobrador</td>
+              <td>creditos</td>
+              <td>saldo</td>
             </tr>
           </thead>
           <tbody className="table-body">
             <tr key={cobro.id}>
-              <td>&nbsp;{cobro.id}</td>
-              <td>&nbsp;{cobro.name}</td>
+              <td className="same-width">{cobro.id}</td>
+              <td>{cobro.name}</td>
               <td>
-                &nbsp;
                 {<Link>{`${cobro.user.name} ${cobro.user.lastName}`}</Link>}
               </td>
               <td>
-                &nbsp;
                 <Link>
                   {`${cobro.debtCollector.name} ${cobro.debtCollector.lastName}`}
                 </Link>
               </td>
-              <td>&nbsp;{cobro.loans}</td>
-              <td>&nbsp;{cobro.balance}</td>
+              <td className="same-width">{cobro.loans}</td>
+              <td className="same-width">
+                <strong>{cobro.balance}</strong>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -87,34 +87,36 @@ function CobroDetails(props) {
         <table className="table">
           <thead className="table-head">
             <tr>
-              <td>&nbsp;id</td>
-              <td>&nbsp;creacion</td>
-              <td>&nbsp;cliente</td>
-              <td>&nbsp;ruta</td>
-              <td>&nbsp;valor</td>
-              <td>&nbsp;interes</td>
-              <td>&nbsp;total credito</td>
-              <td>&nbsp;total pago</td>
-              <td>&nbsp;saldo</td>
+              <td>id</td>
+              <td>creacion</td>
+              <td>cliente</td>
+              <td>ruta</td>
+              <td>valor</td>
+              <td>interes</td>
+              <td>total credito</td>
+              <td>total pago</td>
+              <td>saldo</td>
             </tr>
           </thead>
           <tbody className="table-body">
             {creditos.map((credito) => {
               return (
                 <tr key={credito.id}>
-                  <td>&nbsp;{credito.id}</td>
-                  {/* <td>&nbsp;{credito.createdAt}</td> */}
+                  <td className="same-width">{credito.id}</td>
+                  <td>{moment(credito.createdAt).fromNow()}</td>
                   <td>
-                    &nbsp;
-                    {moment(credito.createdAt).fromNow()}
+                    <Link>
+                      {`${credito.customer.name} ${credito.customer.lastName}`}
+                    </Link>
                   </td>
-                  <td>&nbsp;{credito.customerId}</td>
-                  <td>&nbsp;{`${credito.routePosition}`}</td>
-                  <td>&nbsp;{credito.value}</td>
-                  <td>&nbsp;{`${credito.loanInterest}`}</td>
-                  <td>&nbsp;{credito.total}</td>
-                  <td>&nbsp;{credito.totalPaid}</td>
-                  <td>&nbsp;{credito.balance}</td>
+                  <td className="same-width">{`${credito.routePosition}`}</td>
+                  <td className="same-width">{credito.value}</td>
+                  <td className="same-width">{`${credito.loanInterest}`}</td>
+                  <td className="same-width">{credito.total}</td>
+                  <td className="same-width">{credito.totalPaid}</td>
+                  <td className="same-width">
+                    <strong>{credito.balance}</strong>
+                  </td>
                 </tr>
               );
             })}

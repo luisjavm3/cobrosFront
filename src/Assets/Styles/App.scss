@@ -4,6 +4,7 @@
 @import "./Components/Header.scss";
 @import "./Components/Menu.scss";
 @import "./Components/TableFooter.scss";
+@import "./Components/CobroDetails.scss";
 @import "./Pages/Login.scss";
 @import "./Pages/Cobros.scss";
 
@@ -53,6 +54,15 @@ input{
 
     td{
         height: $table-item-height;
+        text-align: center;
+
+        a{
+            text-decoration: none;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     }
 }
 

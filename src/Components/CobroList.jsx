@@ -17,7 +17,7 @@ function CobroList(props) {
     }
 
     fetchCobros();
-  }, []);
+  }, [client]);
 
   return (
     <div>
@@ -25,40 +25,34 @@ function CobroList(props) {
         <table className="table">
           <thead className="table-head">
             <tr>
-              <td>&nbsp;id</td>
-              <td>&nbsp;nombre</td>
-              <td>&nbsp;usuario</td>
-              <td>&nbsp;cobrador</td>
-              <td>&nbsp;creditos</td>
-              <td>&nbsp;total</td>
+              <td>id</td>
+              <td>nombre</td>
+              <td>usuario</td>
+              <td>cobrador</td>
+              <td>creditos</td>
+              <td>total</td>
             </tr>
           </thead>
           <tbody className="table-body">
             {cobros.map((cobro) => {
               return (
                 <tr key={cobro.id}>
+                  <td>{cobro.id}</td>
                   <td>
-                    &nbsp;
-                    {cobro.id}
-                  </td>
-                  <td>
-                    &nbsp;
                     <Link to={`/cobros/${cobro.id}?page=1&size=30`}>
                       {cobro.name}
                     </Link>
                   </td>
                   <td>
-                    &nbsp;
                     {<Link>{`${cobro.user.name} ${cobro.user.lastName}`}</Link>}
                   </td>
                   <td>
-                    &nbsp;
                     <Link>
                       {`${cobro.debtCollector.name} ${cobro.debtCollector.lastName}`}
                     </Link>
                   </td>
-                  <td>&nbsp;{cobro.loans}</td>
-                  <td>&nbsp;{cobro.balance}</td>
+                  <td>{cobro.loans}</td>
+                  <td>{cobro.balance}</td>
                 </tr>
               );
             })}
