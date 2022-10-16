@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams, useSearchParams } from "react-router-dom";
+import moment from "moment";
+import "moment/locale/es";
+
 import TableFooter from "./TableFooter";
 
 function CobroDetails(props) {
@@ -10,6 +13,7 @@ function CobroDetails(props) {
   const [creditos, setCreditos] = useState([]);
   const [pagination, setPagination] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
+  moment.locale("es");
 
   const page = searchParams.get("page");
   const size = searchParams.get("size");
@@ -86,7 +90,7 @@ function CobroDetails(props) {
               <td>&nbsp;id</td>
               <td>&nbsp;creacion</td>
               <td>&nbsp;cliente</td>
-              <td>&nbsp;posicion ruta</td>
+              <td>&nbsp;ruta</td>
               <td>&nbsp;valor</td>
               <td>&nbsp;interes</td>
               <td>&nbsp;total credito</td>
@@ -99,7 +103,11 @@ function CobroDetails(props) {
               return (
                 <tr key={credito.id}>
                   <td>&nbsp;{credito.id}</td>
-                  <td>&nbsp;{credito.createdAt}</td>
+                  {/* <td>&nbsp;{credito.createdAt}</td> */}
+                  <td>
+                    &nbsp;
+                    {moment(credito.createdAt).fromNow()}
+                  </td>
                   <td>&nbsp;{credito.customerId}</td>
                   <td>&nbsp;{`${credito.routePosition}`}</td>
                   <td>&nbsp;{credito.value}</td>
