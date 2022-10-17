@@ -1,0 +1,44 @@
+.loan-container{
+    height: 720px;
+    list-style: none;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+}
+
+.loan-item{
+    height: $table-item-height;
+
+    &:nth-child(2n+1){
+        background-color: lighten($color: $bud-green, $amount: 35);
+    }
+
+    &:nth-child(2n){
+        background-color: white;
+    }
+}
+
+.item{
+    display: flex;
+    height: inherit;
+}
+
+.item__posicion{
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    justify-content: center;
+    width: 50px;
+}
+
+.item__cliente{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.item__saldo{
+    display: flex;
+    align-items: center;
+
+}
