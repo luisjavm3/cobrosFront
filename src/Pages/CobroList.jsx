@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { getAxios } from "../Utils/getAxios";
 
-function CobroList(props) {
-  const { client } = props;
+function CobroList() {
+  const client = getAxios();
   const [cobros, setCobros] = useState([]);
 
   useEffect(() => {

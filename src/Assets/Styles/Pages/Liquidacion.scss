@@ -1,0 +1,22 @@
+.liquidacion-viewport{
+    // align-items: center;
+    // display: flex;
+    min-height: 90vh;
+}
+
+.liquidacion{
+    display: flex;
+    margin-top: 5rem;
+}
+
+.liquidacion__ruta{
+
+    background-color: beige;
+    // width: 450px;
+    flex-basis: 400px;
+}
+
+.liquidacion__credito{
+    background-color: azure;
+    flex-grow: 1;
+}

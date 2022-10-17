@@ -9,10 +9,11 @@ import {
 import moment from "moment";
 import "moment/locale/es";
 
-import TableFooter from "./TableFooter";
+import TableFooter from "../Components/TableFooter";
+import { getAxios } from "../Utils/getAxios";
 
-function CobroDetails(props) {
-  const { client } = props;
+function CobroDetails() {
+  const client = getAxios();
   const { id } = useParams();
   const [cobro, setCobro] = useState({ user: {}, debtCollector: {} });
   const [creditos, setCreditos] = useState([]);
@@ -55,7 +56,6 @@ function CobroDetails(props) {
   }, [page, size, id, client]);
 
   const onLiquidarHandler = () => {
-    console.log("liquidar");
     navigate(`/cobros/${id}/liquidacion`);
   };
 
