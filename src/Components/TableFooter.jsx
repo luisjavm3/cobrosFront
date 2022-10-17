@@ -6,8 +6,8 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 export default function TableFooter(props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { pagination } = props;
-  const page = searchParams.get("page");
-  const size = searchParams.get("size");
+  const page = parseInt(searchParams.get("page"));
+  const size = parseInt(searchParams.get("size"));
   const location = useLocation();
 
   const onSelectHandler = function (e) {
@@ -29,7 +29,7 @@ export default function TableFooter(props) {
             name="pageSize"
             id="pageSize"
             onChange={(e) => onSelectHandler(e)}
-            value={["10", "30", "50", "100"].includes(size) ? size : "0"}
+            value={[10, 30, 50, 100].includes(size) ? size : "0"}
           >
             <option value="0">-</option>
             <option value="10">10</option>
@@ -42,7 +42,7 @@ export default function TableFooter(props) {
 
       <div className="table-footer-section">
         <div className="navigation">
-          {page == 1 ? (
+          {page === 1 ? (
             <span>primera</span>
           ) : (
             <Link to={`${location.pathname}?page=1&size=${size}`}>
@@ -50,7 +50,7 @@ export default function TableFooter(props) {
             </Link>
           )}
 
-          {page == 1 ? (
+          {page === 1 ? (
             <span>
               <FontAwesomeIcon icon={faAngleLeft} />
             </span>
@@ -76,7 +76,7 @@ export default function TableFooter(props) {
             </Link>
           )}
 
-          {page == pagination.totalPages ? (
+          {page === pagination.totalPages ? (
             <span>última</span>
           ) : (
             <Link

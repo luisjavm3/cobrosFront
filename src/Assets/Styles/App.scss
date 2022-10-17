@@ -29,14 +29,15 @@ input{
     font-size: 1.2rem;
     height: 2rem;
     min-width: 150px;
+    text-transform: capitalize;
 
     &:hover{
-        background-color: #FDFFFC;
+        background-color: lighten($color: $bud-green, $amount: 37);
         cursor: pointer;
     }
-
+    
     &:active{
-        background-color: #E2FFD6;
+        background-color: lighten($color: $bud-green, $amount: 20);
     }
 }
 

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import moment from "moment";
 import "moment/locale/es";
 
@@ -13,6 +18,7 @@ function CobroDetails(props) {
   const [creditos, setCreditos] = useState([]);
   const [pagination, setPagination] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   moment.locale("es");
 
   const page = searchParams.get("page");
@@ -47,6 +53,11 @@ function CobroDetails(props) {
     fetchCobro();
     fetchCreditos();
   }, [page, size, id, client]);
+
+  const onLiquidarHandler = () => {
+    console.log("liquidar");
+    navigate(`/cobros/${id}/liquidacion`);
+  };
 
   return (
     <div>
@@ -86,7 +97,20 @@ function CobroDetails(props) {
       </div>
 
       <div className="cobros__table-wrapper">
-        <h2>Creditos</h2>
+        <div className="table-options">
+          <div className="title-wrapper">
+            <h2>Creditos</h2>
+          </div>
+
+          <div className="stretch"></div>
+
+          <div className="table-buttons">
+            <button className="button" onClick={onLiquidarHandler}>
+              liquidar
+            </button>
+          </div>
+        </div>
+
         <table className="table">
           <thead className="table-head">
             <tr>
@@ -127,7 +151,6 @@ function CobroDetails(props) {
             })}
           </tbody>
         </table>
-
         <TableFooter pagination={pagination} />
       </div>
     </div>
