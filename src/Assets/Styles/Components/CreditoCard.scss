@@ -7,26 +7,39 @@
     .header{
         align-items: stretch;
         display: flex;
-        height: 28%;
-    }
-    
-    .contenedor{
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+        height: 30%;
 
-        > div {
-            border-bottom: 2px solid $bud-green;
+        .contenedor{
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
-            padding: 3px;
+    
+            > div {
+                border-bottom: 2px solid $bud-green;
+                flex-grow: 1;
+                padding: 3px;
+            }
         }
     }
+
+    .abonos{
+        height: 40%;
+        overflow: hidden;
+    }
+
+    .panel-liquidacion{
+        // background-color: aqua;
+        border-top: medium solid $bud-green;
+        display: flex;
+        flex-direction: column;
+        height: 30%;
+    }
+    
 }
 
 .header__posicion{
     align-items: center;
     background-color: $bud-green;
-    // color: white;
     display: flex;
     justify-content: center;
     width: 140px;
@@ -34,4 +47,99 @@
 
 .header__numeros{
     display: flex;
+
+    > div{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .texto{
+        font-size: .8rem;
+        text-transform: capitalize;
+    }
+
+    .cifra{
+        align-items: center;
+        display: inline-flex;
+        flex-grow: 1;
+    }
+}
+
+.lista-abonos{
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    overflow: auto;
+    padding: 3px;
+}
+
+.panel-liquidacion{
+    .input-contenedor{
+        height: 50%;
+    }
+
+    .dos-opciones{
+        display: flex;
+        flex-grow: 1;
+
+        .button-wrapper{
+            width: 50%;
+        }
+    }
+
+    .button-wrapper{
+        flex-grow: 1;
+
+        button{
+            height: 100%;
+            text-transform: capitalize;
+            width: 100%;
+        }
+    }
+}
+
+.input-contenedor{
+    align-items: center;
+    display: flex;
+    
+    >div{
+        flex-grow: 1;
+    }
+
+    .input-wrapper{
+        width: 105px;
+        height: 3rem;
+
+        input, form{
+            height: 100%;
+        }
+    }
+
+    .same-width{
+        display: flex;
+        flex-basis: 150px;
+        flex-direction: column;
+        padding: 5px;
+
+        span{
+            text-align: center;
+        }
+
+        span:first-child{
+            font-size: .8rem;
+            text-transform: capitalize;
+        }
+
+        .cifra{
+            font-size: 1.9rem;
+        }
+        
+    }
+
+    // .input-wrapper{
+    //     height: 2rem;
+    // }
+
 }

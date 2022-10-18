@@ -1,12 +1,13 @@
 .liquidacion-viewport{
     min-height: 90vh;
+
+    > .liquidacion{
+        display: flex;
+        height: 720px;
+        margin-top: 5rem;
+    }
 }
 
-.liquidacion{
-    display: flex;
-    height: 720px;
-    margin-top: 5rem;
-}
 
 .liquidacion__ruta{
     background-color: beige;
