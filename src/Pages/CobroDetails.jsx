@@ -56,7 +56,7 @@ function CobroDetails() {
   }, [page, size, id, client]);
 
   const onLiquidarHandler = () => {
-    navigate(`/cobros/${id}/liquidacion`);
+    navigate(`/cobros/${id}/liquidacion?posicion=1`);
   };
 
   return (

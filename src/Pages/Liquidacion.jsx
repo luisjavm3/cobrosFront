@@ -1,4 +1,5 @@
 import React from "react";
+import CreditoCard from "../Components/CreditoCard";
 import Ruta from "../Components/Ruta";
 import { getAxios } from "../Utils/getAxios";
 
@@ -11,7 +12,16 @@ export default function Liquidacion() {
         <div className="liquidacion__ruta">
           <Ruta client={client} />
         </div>
-        <div className="liquidacion__credito">credita</div>
+        <div className="liquidacion__creditos">
+          <div className="credito-actual">
+            <CreditoCard />
+          </div>
+
+          <div className="container">
+            <div className="nuevos-creditos">nuevos</div>
+            <div className="creditos-pagos">pagos</div>
+          </div>
+        </div>
       </div>
     </div>
   );
