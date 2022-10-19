@@ -1,29 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 
 const abonos = [
-  { id: 1, valor: 12, saldo: 12 },
-  { id: 2, valor: 12, saldo: 12 },
-  { id: 3, valor: 12, saldo: 12 },
-  { id: 4, valor: 12, saldo: 12 },
-  { id: 5, valor: 12, saldo: 12 },
-  { id: 6, valor: 12, saldo: 12 },
-  { id: 7, valor: 12, saldo: 12 },
-  { id: 8, valor: 12, saldo: 12 },
-  { id: 9, valor: 12, saldo: 12 },
-  { id: 10, valor: 12, saldo: 12 },
-  { id: 11, valor: 12, saldo: 12 },
-  { id: 12, valor: 12, saldo: 12 },
-  { id: 13, valor: 12, saldo: 12 },
-  { id: 14, valor: 12, saldo: 12 },
-  { id: 15, valor: 12, saldo: 12 },
-  { id: 16, valor: 12, saldo: 12 },
-  { id: 17, valor: 12, saldo: 12 },
-  { id: 18, valor: 12, saldo: 12 },
+  { id: 1, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 2, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 3, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 4, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 5, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 6, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 7, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 8, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 9, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 10, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 11, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 12, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 13, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 14, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 15, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 16, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 17, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 18, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 19, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 20, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 21, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 22, fecha: "2020-12-12", valor: 12, saldo: 12 },
+  { id: 23, fecha: "2020-12-12", valor: 12, saldo: 12 },
 ];
 
 const isAdmin = true;
 
 export default function CreditoCard() {
+  const [cifra, setCifra] = useState("");
+
+  const onKeyDownHandler = (e) => {
+    const allowedKeys = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "Backspace",
+      "Enter",
+      "ArrowLeft",
+      "ArrowRight",
+    ];
+
+    if (!allowedKeys.includes(e.key)) e.preventDefault();
+    if (!cifra && e.key === "0") e.preventDefault();
+    setCifra(e.target.value);
+  };
+
   return (
     <div className="credito-card">
       <div className="header">
@@ -55,11 +85,19 @@ export default function CreditoCard() {
       </div>
 
       <div className="abonos">
+        <div className="lista-header">
+          <div className="fecha same-width">fecha</div>
+          <div className="valor same-width">valor</div>
+          <div className="saldo same-width">saldo</div>
+        </div>
+
         <ul className="lista-abonos">
           {abonos.map((abono) => {
             return (
               <li key={abono.id}>
-                {abono.valor}&nbsp;{abono.saldo}{" "}
+                <div className="fecha same-width">{abono.fecha}</div>
+                <div className="valor same-width">{abono.valor}</div>
+                <div className="saldo same-width">{abono.saldo}</div>
               </li>
             );
           })}
@@ -74,7 +112,7 @@ export default function CreditoCard() {
           </div>
           <div className="input-wrapper">
             <form>
-              <input type="text" />
+              <input type="text" onKeyDown={onKeyDownHandler} />
             </form>
           </div>
           <div className="nuevo-saldo same-width">
