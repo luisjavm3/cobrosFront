@@ -43,6 +43,10 @@
     display: flex;
     justify-content: center;
     width: 140px;
+
+    >span{
+        font-size: 3rem;
+    }   font-weight: 500;
 }
 
 .header__numeros{
@@ -107,6 +111,8 @@
 }
 
 .panel-liquidacion{
+    background-color: lighten($color: $bud-green, $amount: 20);
+
     .input-contenedor{
         height: 50%;
     }
